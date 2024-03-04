@@ -2,4 +2,4 @@ pb_data/
 .env
 .env.*
 !.env.example
-*.exe
+basedpocket.exe
