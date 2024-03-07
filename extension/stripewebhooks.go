@@ -137,7 +137,7 @@ func handleSubscriptionCreatedEvent(app core.App, event stripe.Event) error {
 		return fmt.Errorf("error handling stripe event. EventID: %s", *eventId)
 	}
 
-	customer, err := app.Dao().FindFirstRecordByData("customers", "stripe_customer_id", stripeSubscription.Customer)
+	customer, err := app.Dao().FindFirstRecordByData("customers", "stripe_customer_id", stripeSubscription.Customer.ID)
 	if err != nil {
 		eventId := sentry.CaptureException(err)
 		return fmt.Errorf("error handling stripe event. EventID: %s", *eventId)
@@ -190,7 +190,7 @@ func handleSubscriptionDeletedEvent(app core.App, event stripe.Event) error {
 		return fmt.Errorf("error handling stripe event. EventID: %s", *eventId)
 	}
 
-	customer, err := app.Dao().FindFirstRecordByData("customers", "stripe_customer_id", stripeSubscription.Customer)
+	customer, err := app.Dao().FindFirstRecordByData("customers", "stripe_customer_id", stripeSubscription.Customer.ID)
 	if err != nil {
 		eventId := sentry.CaptureException(err)
 		return fmt.Errorf("error handling stripe event. EventID: %s", *eventId)

@@ -27,8 +27,8 @@ func CreateCustomersCollection(app core.App) {
 	customers := &models.Collection{
 		Name:       collectionName,
 		Type:       models.CollectionTypeBase,
-		ListRule:   nil,
-		ViewRule:   nil,
+		ListRule:   types.Pointer("user.id = @request.auth.id"),
+		ViewRule:   types.Pointer("user.id = @request.auth.id"),
 		CreateRule: nil,
 		UpdateRule: nil,
 		DeleteRule: nil,

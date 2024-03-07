@@ -11,6 +11,9 @@ import (
 	"github.com/pocketbase/pocketbase/core"
 )
 
+// go run main.go serve
+//
+
 func main() {
 
 	env := extension.LoadEnv()
@@ -25,7 +28,7 @@ func main() {
 
 	app.OnBeforeServe().Add(func(e *core.ServeEvent) error {
 		e.Router.AddRoute(echo.Route{
-			Method: http.MethodGet,
+			Method: http.MethodPost,
 			Path:   "/webhooks/stripe",
 			Handler: func(c echo.Context) error {
 				return extension.HandleStripeWebhook(e.App, c, env)
