@@ -25,8 +25,8 @@ RUN apk add --no-cache ca-certificates
 # Copy the binary from the builder stage
 COPY --from=builder /basedpocket /basedpocket
 
-# Expose port 8080 for the application
-EXPOSE 8080
+# Expose port $PORT for the application
+EXPOSE $PORT
 
 # Command to run the binary
-CMD ["/basedpocket", "serve", "--http=0.0.0.0:8080"]
+CMD ["/basedpocket", "serve", "--http=0.0.0.0:$PORT"]
