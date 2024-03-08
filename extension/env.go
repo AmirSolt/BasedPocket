@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"log"
 	"os"
-	"path/filepath"
 
 	"github.com/go-playground/validator/v10"
 	"github.com/joho/godotenv"
