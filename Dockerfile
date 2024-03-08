@@ -25,6 +25,9 @@ RUN apk add --no-cache ca-certificates
 # Copy the binary from the builder stage
 COPY --from=builder /basedpocket /basedpocket
 
+# Set a default value for the PORT environment variable
+ENV PORT 8080
+
 # Expose port $PORT for the application
 EXPOSE $PORT
 
