@@ -1,6 +1,7 @@
 package extension
 
 import (
+	"fmt"
 	"log"
 	"os"
 	"path/filepath"
@@ -22,9 +23,8 @@ type Env struct {
 
 func LoadEnv() *Env {
 
-	rootDir := "./"
-	if err := godotenv.Load(filepath.Join(rootDir, ".env")); err != nil {
-		log.Fatal("Error .env:", err)
+	if err := godotenv.Load(".env"); err != nil {
+		fmt.Println("Warrning .env error:", err)
 	}
 
 	env := Env{
