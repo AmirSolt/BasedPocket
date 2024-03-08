@@ -32,4 +32,5 @@ ENV PORT 8080
 EXPOSE $PORT
 
 # Command to run the binary
-CMD ["/basedpocket", "serve", "--http=0.0.0.0:$PORT"]
+# CMD ["/basedpocket", "serve", "--http=0.0.0.0:$PORT"]
+CMD ["/bin/sh", "-c", "/basedpocket serve --http=0.0.0.0:$PORT"]
