@@ -23,7 +23,7 @@ type Env struct {
 func LoadEnv() *Env {
 
 	if err := godotenv.Load(".env"); err != nil {
-		fmt.Println("Warrning .env error:", err)
+		fmt.Println("Warrning .env does not exist:", err)
 	}
 
 	env := Env{
