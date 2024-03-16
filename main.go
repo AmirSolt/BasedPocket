@@ -1,14 +1,12 @@
 package main
 
 import (
-	"basedpocket/extension"
+	"basedpocket/base"
+	"basedpocket/cmodels"
+	"basedpocket/services/payment"
 	"log"
-	"net/http"
 
-	"github.com/labstack/echo/v5"
 	"github.com/pocketbase/pocketbase"
-	"github.com/pocketbase/pocketbase/apis"
-	"github.com/pocketbase/pocketbase/core"
 )
 
 // go run main.go serve
