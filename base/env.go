@@ -1,4 +1,4 @@
-package extension
+package base
 
 import (
 	"fmt"

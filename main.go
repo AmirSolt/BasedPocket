@@ -16,30 +16,12 @@ import (
 
 func main() {
 
-	env := extension.LoadEnv()
-	extension.LoadLogging(env)
-
+	env := base.LoadEnv()
+	base.LoadLogging(env)
 	app := pocketbase.New()
 
-	app.OnBeforeServe().Add(func(e *core.ServeEvent) error {
-		extension.CreateCustomersCollection(e.App)
-		return nil
-	})
-
-	app.OnBeforeServe().Add(func(e *core.ServeEvent) error {
-		e.Router.AddRoute(echo.Route{
-			Method: http.MethodPost,
-			Path:   "/webhooks/stripe",
-			Handler: func(c echo.Context) error {
-				return extension.HandleStripeWebhook(e.App, c, env)
-			},
-			Middlewares: []echo.MiddlewareFunc{
-				apis.ActivityLogger(e.App),
-			},
-		})
-
-		return nil
-	})
+	cmodels.LoadModels(app, env)
+	payment.LoadPayment(app, env)
 
 	if err := app.Start(); err != nil {
 		log.Fatal(err)
